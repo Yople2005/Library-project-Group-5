@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store Slider</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom CSS */
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+        }
+
+        .card img {
+            border-radius: 10px 10px 0 0;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 20px;
+            z-index: 1;
+        }
+
+        .left-btn {
+            left: 10px;
+        }
+
+        .right-btn {
+            right: 10px;
+        }
+
+        .slider-btn:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container slider-container">
+        <button class="slider-btn left-btn" onclick="moveLeft()"><i class="fas fa-chevron-left"></i></button>
+        <div class="slider row">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="card">
+                    <img src="./photo_2024-05-23_22-09-58.jpg" class="card-img-top" alt="Book Cover 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Book Title 1</h5>
+                        <p class="card-text">Author: Author 1</p>
+                        <p class="card-text">Genre: Genre 1</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="card">
+                    <img src="./photo_2024-05-23_22-09-58.jpg" class="card-img-top" alt="Book Cover 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Book Title 2</h5>
+                        <p class="card-text">Author: Author 2</p>
+                        <p class="card-text">Genre: Genre 2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="card">
+                    <img src="./photo_2024-05-23_22-09-58.jpg" class="card-img-top" alt="Book Cover 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Book Title 2</h5>
+                        <p class="card-text">Author: Author 2</p>
+                        <p class="card-text">Genre: Genre 2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="card">
+                    <img src="./photo_2024-05-23_22-09-58.jpg" class="card-img-top" alt="Book Cover 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Book Title 2</h5>
+                        <p class="card-text">Author: Author 2</p>
+                        <p class="card-text">Genre: Genre 2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="card">
+                    <img src="./photo_2024-05-23_22-09-58.jpg" class="card-img-top" alt="Book Cover 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Book Title 2</h5>
+                        <p class="card-text">Author: Author 2</p>
+                        <p class="card-text">Genre: Genre 2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="card">
+                    <img src="./photo_2024-05-23_22-09-58.jpg" class="card-img-top" alt="Book Cover 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Book Title 2</h5>
+                        <p class="card-text">Author: Author 2</p>
+                        <p class="card-text">Genre: Genre 2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="card">
+                    <img src="./photo_2024-05-23_22-09-58.jpg" class="card-img-top" alt="Book Cover 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Book Title 2</h5>
+                        <p class="card-text">Author: Author 2</p>
+                        <p class="card-text">Genre: Genre 2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn right-btn" onclick="moveRight()"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const cards = document.querySelectorAll('.slider .col-xl-2');
+        const totalCards = cards.length;
+
+        function moveRight() {
+            if (currentIndex < totalCards - 7) {
+                currentIndex += 3;
+                updateSlider();
+            }
+        }
+
+        function moveLeft() {
+            if (currentIndex > 0) {
+                currentIndex -= 1;
+                updateSlider();
+            }
+        }
+
+        function updateSlider() {
+            const slider = document.querySelector('.slider');
+            const width = cards[0].offsetWidth;
+            slider.style.transform = `translateX(-${currentIndex * width}px)`;
+        }
+    </script>
+</body>
+</html>
