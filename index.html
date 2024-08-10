@@ -25,7 +25,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="./assets/css/sign-in-style.css">
 </head>
 
 <body>
@@ -57,6 +57,37 @@
     </div>
   </header><!-- End Header -->
 
+
+<!-- Sign Section -->
+<div class="sign-in-section">
+  <div id="myModal" class="sign-in-container">
+      <!-- User Form -->
+      <div id="userForm" class="sign-in">
+          <span class="close-sign-in">&times;</span>
+          <h2 id="formTitle">Go to Library</h2>
+          <form onsubmit="emailSend(); reset(); return false;">
+              <input type="text" id="accessCode" placeholder="Access Code" name="accessCode" required>
+              <input type="text" id="name" placeholder="Name" name="name" required>
+              <input type="text" id="rollNo" placeholder="Roll No" name="rollNo" required>
+              <button type="submit" class="btn">Submit</button>
+              <span id="adminAccess" class="admin-link">Admin Access</span>
+          </form>
+      </div>
+      
+      <!-- Admin Form -->
+      <div id="adminForm" class="sign-in" style="display: none;">
+          <span class="close-sign-in" id="closeAdmin">&times;</span>
+          <h2 id="adminTitle">Admin Access</h2>
+          <form onsubmit="adminLogin(); return false;">
+              <input type="text" id="adminUsername" placeholder="Username" name="username" required>
+              <input type="password" id="adminPassword" placeholder="Password" name="password" required>
+              <button type="submit" class="btn">Login</button>
+              <span id="backToUserForm" class="admin-link">Back to User Form</span>
+          </form>
+      </div>
+  </div> 
+ </div>
+
   <!-- ======= Hero Section ======= -->
   <section class="hero-section" id="hero">
 
@@ -81,7 +112,7 @@
               <p class="mb-5" data-aos="fade-right" data-aos-delay="100">"Innovative Library: An Innovative Fusion of Physical and Digital"
               </p>
               <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500">
-                <button class="readmore-btn" onclick="window.location.href='https://innovative-library-book-list.netlify.app'">
+                <button id="openPopupBtn" class="readmore-btn">
                   <span class="book-wrapper">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -294,7 +325,9 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script src="./assets/js/sign-in-script.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
 </body>
 
 </html>
